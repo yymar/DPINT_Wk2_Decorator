@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPINT_Wk2_Decorator", "DPINT_Wk2_Decorator\DPINT_Wk2_Decorator.csproj", "{8B273632-6712-4E2E-8296-A4D38E6A88BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FighterWithConsoleApplication", "FighterWithConsoleApplication\FighterWithConsoleApplication.csproj", "{6FB3F302-C0FC-4472-AA97-4A3167A58EA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{8B273632-6712-4E2E-8296-A4D38E6A88BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B273632-6712-4E2E-8296-A4D38E6A88BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B273632-6712-4E2E-8296-A4D38E6A88BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FB3F302-C0FC-4472-AA97-4A3167A58EA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FB3F302-C0FC-4472-AA97-4A3167A58EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FB3F302-C0FC-4472-AA97-4A3167A58EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FB3F302-C0FC-4472-AA97-4A3167A58EA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C8A1E7F-20A2-43E7-ACE8-4C9835265D54}
 	EndGlobalSection
 EndGlobal
