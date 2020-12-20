@@ -82,14 +82,14 @@ namespace DPINT_Wk2_Decorator.ViewModel
         public void Attack()
         {
             var attack = _fighter.Attack();
-            LogMessages(attack.Messages);           
+            LogMessages(attack.Messages);
 
-            if(EnemyFighterViewModel != null)
+            if (EnemyFighterViewModel != null)
             {
                 EnemyFighterViewModel.Defend(attack);
             }
         }
-        
+
         private void Defend(Attack attack)
         {
             attack.Messages.Clear();
