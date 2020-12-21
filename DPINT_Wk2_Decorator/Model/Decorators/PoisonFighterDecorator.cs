@@ -12,15 +12,12 @@ namespace DPINT_Wk2_Decorator.Model.Decorators
 
         public PoisonFighterDecorator(IFighter fighter) : base(fighter)
         {
-            this.Lives = fighter.Lives;
-            this.AttackValue = fighter.AttackValue;
-            this.DefenseValue = fighter.DefenseValue;
             PoisonStrength = 10;
         }
 
         public override Attack Attack()
         {
-            var attack = new Attack("Poison attack: " + this.AttackValue, this.AttackValue);
+            var attack = _fighter.Attack();
 
             if (PoisonStrength > 0)
             {
@@ -33,7 +30,6 @@ namespace DPINT_Wk2_Decorator.Model.Decorators
                 attack.Messages.Add("Poison ran out.");
             }
 
-            base.Attack();
             return attack;
         }
     }

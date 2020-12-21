@@ -6,9 +6,6 @@
 
         public ShieldFighterDecorator(IFighter fighter) : base(fighter)
         {
-            this.Lives = fighter.Lives;
-            this.AttackValue = fighter.AttackValue;
-            this.DefenseValue = fighter.DefenseValue;
             this.ShieldDefends = 3;
         }
 
@@ -20,10 +17,8 @@
                 attack.Value = 0;
                 ShieldDefends--;
             }
-            else
-            {
-                base.Defend(attack);
-            }
+
+            _fighter.Defend(attack);
         }
     }
 }

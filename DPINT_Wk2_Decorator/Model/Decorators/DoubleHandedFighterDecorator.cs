@@ -12,15 +12,12 @@ namespace DPINT_Wk2_Decorator.Model.Decorators
 
         public DoubleHandedFighterDecorator(IFighter fighter) : base(fighter)
         {
-            this.Lives = fighter.Lives;
-            this.AttackValue = fighter.AttackValue;
-            this.DefenseValue = fighter.DefenseValue;
             this.DoubleHanded = true;
         }
 
         public override Attack Attack()
         {
-            var attack = new Attack("Double Handed attack: " + this.AttackValue, this.AttackValue);
+            var attack = _fighter.Attack();
 
             if (DoubleHanded)
             {
@@ -28,7 +25,6 @@ namespace DPINT_Wk2_Decorator.Model.Decorators
                 attack.Messages.Add("Doubled the original attack value: " + AttackValue);
             }
 
-            base.Attack();
             return attack;
         }
 
@@ -36,11 +32,14 @@ namespace DPINT_Wk2_Decorator.Model.Decorators
         {
             if (DoubleHanded)
             {
-                attack.Messages.Add("One hand defended the attack: -" + DefenseValue);
-                attack.Value -= DefenseValue;
+                if (attack.Value != 0)
+                {
+                    attack.Messages.Add("One hand defended the attack: -" + DefenseValue);
+                    attack.Value -= DefenseValue;
+                }
             }
 
-            base.Defend(attack);
+            _fighter.Defend(attack);
         }
     }
 }

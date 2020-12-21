@@ -13,15 +13,12 @@ namespace DPINT_Wk2_Decorator.Model.Decorators
 
         public ShotgunFighterDecorator(IFighter fighter) : base(fighter)
         {
-            this.Lives = fighter.Lives;
-            this.AttackValue = fighter.AttackValue;
-            this.DefenseValue = fighter.DefenseValue;
             this.UseShotgun = true;
         }
 
         public override Attack Attack()
         {
-            var attack = new Attack("Normal attack: " + this.AttackValue, this.AttackValue);
+            var attack = _fighter.Attack();
 
             if (UseShotgun)
             {
@@ -38,7 +35,6 @@ namespace DPINT_Wk2_Decorator.Model.Decorators
                 }
             }
 
-            base.Attack();
             return attack;
         }
     }

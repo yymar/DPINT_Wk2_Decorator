@@ -13,10 +13,6 @@ namespace DPINT_Wk2_Decorator.Model.Decorators
 
         public MinionFighterDecorator(IFighter fighter) : base(fighter)
         {
-            this.Lives = fighter.Lives;
-            this.AttackValue = fighter.AttackValue;
-            this.DefenseValue = fighter.DefenseValue;
-
             // minion logic
             this.MinionLives = fighter.Lives / 2;
             this.MinionAttackValue = fighter.AttackValue / 2;
@@ -24,7 +20,7 @@ namespace DPINT_Wk2_Decorator.Model.Decorators
 
         public override Attack Attack()
         {
-            var attack = new Attack("Minion attack: " + this.AttackValue, this.AttackValue);
+            var attack = _fighter.Attack();
 
             if (MinionLives > 0)
             {
@@ -32,7 +28,6 @@ namespace DPINT_Wk2_Decorator.Model.Decorators
                 attack.Value += MinionAttackValue;
             }
 
-            base.Attack();
             return attack;
         }
 
@@ -43,12 +38,20 @@ namespace DPINT_Wk2_Decorator.Model.Decorators
                 int tmpLives = MinionLives;
                 MinionLives -= Math.Max(0, attack.Value);
                 attack.Value -= Math.Max(0, tmpLives - MinionLives);
-                attack.Messages.Add("Minion defended from the attack: -" + attack.Value);
+
+                attack.Messages.Add("Minion defended from the attack:" + attack.Value);
+
+                if (MinionLives > 0)
+                {
+                    attack.Messages.Add("Minion Lives left: " + MinionLives);
+                }
+                else
+                {
+                    attack.Messages.Add("Minion died!");
+                }
             }
-            else
-            {
-                base.Defend(attack);
-            }
+
+            _fighter.Defend(attack);
         }
     }
 }

@@ -8,36 +8,30 @@ namespace DPINT_Wk2_Decorator.Model.Decorators
 {
     public class StrengthenFighterDecorator : BaseFighterDecorator
     {
-        public StrengthenFighterDecorator(IFighter fighter) : base(fighter)
-        {
-            this.Lives = fighter.Lives;
-            this.AttackValue = fighter.AttackValue;
-            this.DefenseValue = fighter.DefenseValue;
-        }
+        public StrengthenFighterDecorator(IFighter fighter) : base(fighter) { }
 
         public override Attack Attack()
         {
-            var attack = new Attack("Normal attack: " + this.AttackValue, this.AttackValue);
+            var attack = _fighter.Attack();
 
-            double strengthenAttack = Convert.ToDouble(this.AttackValue) * 10 / 100;
+            double strengthenAttack = Convert.ToDouble(attack.Value) * 10 / 100;
             int strengthenAttackInt = (int)Math.Ceiling(strengthenAttack);
 
             attack.Value += strengthenAttackInt;
             attack.Messages.Add("Strengthened the attack with 10%: " + strengthenAttackInt + " (rounded up double: " + strengthenAttack + ")");
 
-            base.Attack();
             return attack;
         }
 
         public override void Defend(Attack attack)
         {
-            double strengthenDefense = Convert.ToDouble(this.AttackValue) * 10 / 100;
+            double strengthenDefense = Convert.ToDouble(attack.Value) * 10 / 100;
             int strengthenDefensekInt = (int)Math.Ceiling(strengthenDefense);
 
             attack.Value -= strengthenDefensekInt;
             attack.Messages.Add("Weakened the attack with 10%: " + strengthenDefensekInt + " (rounded up double: " + strengthenDefense + ")");
 
-            base.Defend(attack);
+            _fighter.Defend(attack);
         }
     }
 }
