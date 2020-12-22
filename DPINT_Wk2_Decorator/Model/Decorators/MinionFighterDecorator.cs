@@ -36,10 +36,11 @@ namespace DPINT_Wk2_Decorator.Model.Decorators
             if (MinionLives > 0)
             {
                 int tmpLives = MinionLives;
+                int minionDamage = attack.Value;
                 MinionLives -= Math.Max(0, attack.Value);
                 attack.Value -= Math.Max(0, tmpLives - MinionLives);
 
-                attack.Messages.Add("Minion defended from the attack:" + attack.Value);
+                attack.Messages.Add("Minion defended from the attack: " + minionDamage);
 
                 if (MinionLives > 0)
                 {
